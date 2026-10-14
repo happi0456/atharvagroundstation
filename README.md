@@ -1,1 +1,1 @@
-dumping from obsidian
+idfk why this doesnt work
