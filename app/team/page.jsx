@@ -1,27 +1,27 @@
 const FACULTY = [
   {
     id: 'faculty-1',
-    name: 'Prof. [Placeholder]',
+    name: 'Dr. Kiruthika B.',
     role: 'Faculty Coordinator',
-    department: 'Electronics & Telecommunication',
+    department: 'HOD Electronics & Telecommunication',
   },
 ]
 
 const MEMBERS = [
-  { id: 'm1',  name: '[Name]', role: '[Role]', domain: 'RF & Hardware',        year: 'Second Year'  },
-  { id: 'm2',  name: '[Name]', role: '[Role]', domain: 'RF & Hardware',        year: 'Third Year'   },
-  { id: 'm3',  name: '[Name]', role: '[Role]', domain: 'RF & Hardware',        year: 'Final Year'   },
-  { id: 'm4',  name: '[Name]', role: '[Role]', domain: 'Software & DSP',       year: 'Second Year'  },
-  { id: 'm5',  name: '[Name]', role: '[Role]', domain: 'Software & DSP',       year: 'Third Year'   },
-  { id: 'm6',  name: '[Name]', role: '[Role]', domain: 'Software & DSP',       year: 'Final Year'   },
-  { id: 'm7',  name: '[Name]', role: '[Role]', domain: 'Satellite Tracking',   year: 'Second Year'  },
-  { id: 'm8',  name: '[Name]', role: '[Role]', domain: 'Satellite Tracking',   year: 'Third Year'   },
-  { id: 'm9',  name: '[Name]', role: '[Role]', domain: 'Satellite Tracking',   year: 'Final Year'   },
-  { id: 'm10', name: '[Name]', role: '[Role]', domain: 'Documentation',        year: 'Second Year'  },
-  { id: 'm11', name: '[Name]', role: '[Role]', domain: 'Documentation',        year: 'Third Year'   },
-  { id: 'm12', name: '[Name]', role: '[Role]', domain: 'RF & Hardware',        year: 'Second Year'  },
-  { id: 'm13', name: '[Name]', role: '[Role]', domain: 'Software & DSP',       year: 'Third Year'   },
-  { id: 'm14', name: '[Name]', role: '[Role]', domain: 'Satellite Tracking',   year: 'Final Year'   },
+  { id: 'm1',  name: 'Komal Joshi', role: '[Role]'},
+  { id: 'm2',  name: 'Lokanath Behra', role: '[Role]'},
+  { id: 'm3',  name: 'Soham Raut', role: '[Role]'},
+  { id: 'm4',  name: 'Rudraprasad Dabre', role: '[Role]'},
+  { id: 'm5',  name: 'Hemavathi Chettiyar', role: '[Role]'},
+  { id: 'm6',  name: 'Krupa Bilade', role: '[Role]'},
+  { id: 'm7',  name: 'Shalu Singh', role: '[Role]'},
+  { id: 'm8',  name: 'Isha Hazra', role: '[Role]'},
+  { id: 'm9',  name: 'Vignesh Thevar', role: '[Role]'},
+  { id: 'm10', name: 'Ayush Shukla', role: '[Role]'},
+  { id: 'm11', name: 'Geet Pimple', role: '[Role]'},
+  { id: 'm12', name: 'Ashish Kumbhar', role: '[Role]'},
+  { id: 'm13', name: 'Md. Husain Shaikh', role: '[Role]'},
+  { id: 'm14', name: 'Vrushali Surve', role: '[Role]'},
 ]
 
 export default function TeamPage() {
@@ -69,8 +69,6 @@ export default function TeamPage() {
                 <div className="flex flex-col gap-1">
                   <span className="font-display font-semibold text-ink text-sm">{member.name}</span>
                   <span className="font-mono text-xs text-gold">{member.role}</span>
-                  <span className="font-mono text-xs text-dim">{member.domain}</span>
-                  <span className="font-mono text-xs text-dim">{member.year}</span>
                 </div>
               </div>
             ))}
