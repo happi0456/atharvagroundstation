@@ -1,6 +1,7 @@
-import './style.css'
-import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
+import './globals.css'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import PageWrapper from '@/components/PageWrapper'
 
 export const metadata = {
   title: 'Atharva Satellite Ground Station',
@@ -12,9 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-canvas text-ink font-body min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-1">
+        <PageWrapper>
           {children}
-        </main>
+        </PageWrapper>
         <Footer />
       </body>
     </html>
