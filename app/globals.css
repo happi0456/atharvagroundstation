@@ -24,10 +24,6 @@ body {
   box-sizing: border-box;
 }
 
-main {
-  animation: fadeIn 0.2s ease-in-out;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <span className="font-mono text-gold text-sm">◈</span>
           <Link href="/" className="font-display font-semibold text-ink text-sm tracking-wide hover:text-gold transition-colors duration-200">
-            Atharva Sat Ground Station
+            Atharva Satellite Ground Station
           </Link>
         </div>
 
