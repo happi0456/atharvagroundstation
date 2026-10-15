@@ -4,32 +4,31 @@ const FACULTY = [
     name: 'Dr. Kiruthika B.',
     role: 'Faculty Coordinator',
     department: 'HOD Electronics & Telecommunication',
-    image: '/assets/team/hod.jpeg',
+    image: '/assets/team/hod.jpeg'
   },
 ]
 
 const MEMBERS = [
-  { id: 'm1',  name: 'Komal Joshi',       role: 'Team Leader',       image: '/assets/teams/komal.png'    },
-  { id: 'm2',  name: 'Lokanath Behra',    role: 'Technical Head',    image: '/assets/teams/swadhin.png'  },
-  { id: 'm3',  name: 'Soham Raut',        role: 'Technical Head',    image: '/assets/teams/soham.jpeg'   },
-  { id: 'm4',  name: 'Rudraprasad Dabre', role: 'Design Architect',  image: '/assets/teams/rudra.png'    },
-  { id: 'm5',  name: 'Hemavathi Chettiyar', role: 'Social Media Head', image: '/assets/teams/hema.png'  },
-  { id: 'm6',  name: 'Krupa Bilade',      role: 'Documentation Head', image: '/assets/teams/krupa.jpg'  },
-  { id: 'm7',  name: 'Shalu Singh',       role: 'Logistics Head',    image: '/assets/teams/shalu.jpg'    },
-  { id: 'm8',  name: 'Isha Hazra',        role: 'Member',            image: '/assets/teams/isha.png'     },
-  { id: 'm9',  name: 'Vignesh Thevar',    role: 'Member',            image: '/assets/teams/vignesh.jpg'  },
-  { id: 'm10', name: 'Ayush Shukla',      role: 'Member',            image: '/assets/teams/ayush.jpg'    },
-  { id: 'm11', name: 'Geet Pimple',       role: 'Member',            image: '/assets/teams/geet.png'     },
-  { id: 'm12', name: 'Ashish Kumbhar',    role: 'Member',            image: '/assets/teams/ashish.jpg'   },
-  { id: 'm13', name: 'Md. Husain Shaikh', role: 'Member',            image: '/assets/teams/husain.jpg'   },
-  { id: 'm14', name: 'Vrushali Surve',    role: 'Member',            image: '/assets/teams/vrushali.jpg' },
+  { id: 'm1',  name: 'Komal Joshi', role: 'Team Leader', image: '/public/assets/teams/komal.png'},
+  { id: 'm2',  name: 'Lokanath Behra', role: 'Technical Head', image: '/public/assets/teams/swadhin.png'},
+  { id: 'm3',  name: 'Soham Raut', role: 'Technical Head', image: '/public/assets/teams/soham.jpeg'},
+  { id: 'm4',  name: 'Rudraprasad Dabre', role: 'Design Architect', image: '/public/assets/teams/rudra.png'},
+  { id: 'm5',  name: 'Hemavathi Chettiyar', role: 'Social Media Head', image: '/public/assets/teams/hema.png'},
+  { id: 'm6',  name: 'Krupa Bilade', role: 'Documentation Head', image: '/public/assets/teams/krupa.jpg'},
+  { id: 'm7',  name: 'Shalu Singh', role: 'Logistics Head', image: '/public/assets/teams/shalu.jpg'},
+  { id: 'm8',  name: 'Isha Hazra', role: 'Member', image: '/public/assets/teams/isha.png'},
+  { id: 'm9',  name: 'Vignesh Thevar', role: 'Member', image: '/public/assets/teams/vignesh.jpg'},
+  { id: 'm10', name: 'Ayush Shukla', role: 'Member', image: '/public/assets/teams/ayush.jpg'},
+  { id: 'm11', name: 'Geet Pimple', role: 'Member', image: '/public/assets/teams/geet.png'},
+  { id: 'm12', name: 'Ashish Kumbhar', role: 'Member', image: '/public/assets/teams/ashish.jpg'},
+  { id: 'm13', name: 'Md. Husain Shaikh', role: 'Member', image : '/public/assets/teams/husain.jpg'},
+  { id: 'm14', name: 'Vrushali Surve', role: 'Member', image: '/assets/teams/vrushali.jpg'},
 ]
 
 export default function TeamPage() {
   return (
-    <div className="pt-16 animate-page">
+    <div className="pt-16">
 
-      {/* Header */}
       <section className="border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <p className="font-mono text-xs text-gold mb-4">THE PEOPLE</p>
@@ -39,19 +38,15 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Faculty */}
       <section className="border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <h2 className="font-display font-semibold text-xl text-ink mb-10">Faculty</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
             {FACULTY.map((f) => (
               <div key={f.id} className="bg-canvas p-8 flex flex-col gap-4 border border-gold">
-                <img
-                  src={f.image}
-                  alt={f.name}
-                  className="w-20 h-20 rounded-full object-cover border-2 border-gold"
-                  onError={e => { e.target.style.display = 'none' }}
-                />
+                <div className="w-16 h-16 rounded-full bg-surface border border-gold flex items-center justify-center">
+                  <span className="font-mono text-xs text-dim">IMG</span>
+                </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-display font-semibold text-ink text-base">{f.name}</span>
                   <span className="font-mono text-xs text-gold">{f.role}</span>
@@ -63,19 +58,15 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Members */}
       <section>
         <div className="max-w-7xl mx-auto px-6 py-16">
           <h2 className="font-display font-semibold text-xl text-ink mb-10">Members</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border">
             {MEMBERS.map((member) => (
               <div key={member.id} className="bg-canvas p-6 flex flex-col gap-4">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-16 h-16 rounded-full object-cover border border-border"
-                  onError={e => { e.target.style.display = 'none' }}
-                />
+                <div className="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center">
+                  <span className="font-mono text-xs text-dim">IMG</span>
+                </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-display font-semibold text-ink text-sm">{member.name}</span>
                   <span className="font-mono text-xs text-gold">{member.role}</span>
