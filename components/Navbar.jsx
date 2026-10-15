@@ -23,13 +23,19 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <span className="font-mono text-gold text-sm">◈</span>
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="font-display font-semibold text-ink text-sm tracking-wide hover:text-gold transition-colors duration-200"
+            className="flex items-center gap-2.5 group"
           >
-            Atharva Satellite Ground Station
+            <img 
+              src="/assets/images/logo.jpeg" 
+              alt="ASGS Logo" 
+              className="w-7 h-7 object-contain"
+            />
+            <span className="font-display font-semibold text-ink text-sm tracking-wide group-hover:text-gold transition-colors duration-200">
+              Atharva Satellite Ground Station
+            </span>
           </Link>
         </div>
 
