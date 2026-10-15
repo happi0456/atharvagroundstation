@@ -26,7 +26,7 @@ const MEMBERS = [
 
 export default function TeamPage() {
   return (
-    <div className="pt-16">
+    <div className="pt-16 animate-page">
 
       <section className="border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-24">

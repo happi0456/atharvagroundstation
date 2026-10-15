@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <div className="pt-16">
+    <div className="pt-16 animate-page">
 
       {/* Header */}
       <section className="border-b border-border">
