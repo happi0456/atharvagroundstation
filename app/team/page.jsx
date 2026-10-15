@@ -4,25 +4,25 @@ const FACULTY = [
     name: 'Dr. Kiruthika B.',
     role: 'Faculty Coordinator',
     department: 'HOD Electronics & Telecommunication',
-    image: ''
+    image: '/assets/team/hod.jpeg'
   },
 ]
 
 const MEMBERS = [
-  { id: 'm1',  name: 'Komal Joshi', role: 'Team Leader', image: ''},
-  { id: 'm2',  name: 'Lokanath Behra', role: 'Technical Head', image: ''},
-  { id: 'm3',  name: 'Soham Raut', role: 'Technical Head', image: ''},
-  { id: 'm4',  name: 'Rudraprasad Dabre', role: 'Design Architect', image: ''},
-  { id: 'm5',  name: 'Hemavathi Chettiyar', role: 'Social Media Head', image: ''},
-  { id: 'm6',  name: 'Krupa Bilade', role: 'Documentation Head', image: ''},
-  { id: 'm7',  name: 'Shalu Singh', role: 'Logistics Head', image: ''},
-  { id: 'm8',  name: 'Isha Hazra', role: 'Member', image: ''},
-  { id: 'm9',  name: 'Vignesh Thevar', role: 'Member', image: ''},
-  { id: 'm10', name: 'Ayush Shukla', role: 'Member', image: ''},
-  { id: 'm11', name: 'Geet Pimple', role: 'Member', image: ''},
-  { id: 'm12', name: 'Ashish Kumbhar', role: 'Member', image: ''},
-  { id: 'm13', name: 'Md. Husain Shaikh', role: 'Member', image : ''},
-  { id: 'm14', name: 'Vrushali Surve', role: 'Member', image: ''},
+  { id: 'm1',  name: 'Komal Joshi', role: 'Team Leader', image: '/assets/teams/komal.png'},
+  { id: 'm2',  name: 'Lokanath Behra', role: 'Technical Head', image: '/assets/teams/swadhin.png'},
+  { id: 'm3',  name: 'Soham Raut', role: 'Technical Head', image: '/assets/teams/soham.jpeg'},
+  { id: 'm4',  name: 'Rudraprasad Dabre', role: 'Design Architect', image: '/assets/teams/rudra.png'},
+  { id: 'm5',  name: 'Hemavathi Chettiyar', role: 'Social Media Head', image: '/assets/teams/hema.png'},
+  { id: 'm6',  name: 'Krupa Bilade', role: 'Documentation Head', image: '/assets/teams/krupa.jpg'},
+  { id: 'm7',  name: 'Shalu Singh', role: 'Logistics Head', image: '/assets/teams/shalu.jpg'},
+  { id: 'm8',  name: 'Isha Hazra', role: 'Member', image: '/assets/teams/isha.png'},
+  { id: 'm9',  name: 'Vignesh Thevar', role: 'Member', image: '/assets/teams/vignesh.jpg'},
+  { id: 'm10', name: 'Ayush Shukla', role: 'Member', image: '/assets/teams/ayush.jpg'},
+  { id: 'm11', name: 'Geet Pimple', role: 'Member', image: '/assets/teams/geet.png'},
+  { id: 'm12', name: 'Ashish Kumbhar', role: 'Member', image: '/assets/teams/ashish.jpg'},
+  { id: 'm13', name: 'Md. Husain Shaikh', role: 'Member', image : '/assets/teams/husain.jpg'},
+  { id: 'm14', name: 'Vrushali Surve', role: 'Member', image: '/assets/teams/vrushali.jpg'},
 ]
 
 export default function TeamPage() {
