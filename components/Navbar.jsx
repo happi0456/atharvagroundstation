@@ -29,7 +29,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="font-display font-semibold text-ink text-sm tracking-wide hover:text-gold transition-colors duration-200"
           >
-            Atharva Sat Ground Station
+            Atharva Satellite Ground Station
           </Link>
         </div>
 
