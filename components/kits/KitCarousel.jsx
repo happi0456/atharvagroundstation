@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
-import KitSlot from './kitslot'
-import SatelliteKit from './satellitekit'
-import SpectrumKit from './spectrumkit'
-import MorseKit from './morsekit'
-import RoverKit from './roverkit'
+import KitSlot from './KitSlot'
+import SatelliteKit from './SatelliteKit'
+import SpectrumKit from './SpectrumKit'
+import MorseKit from './MorseKit'
+import RoverKit from './RoverKit'
 
 const KITS = [SatelliteKit, SpectrumKit, MorseKit, RoverKit]
 const SWAP_DELAY = 2500
