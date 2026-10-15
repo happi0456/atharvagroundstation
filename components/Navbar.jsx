@@ -29,7 +29,7 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group"
           >
             <img 
-              src="/assets/images/logo.jpeg" 
+              src="/public/assets/images/logo.jpeg" 
               alt="ASGS Logo" 
               className="w-7 h-7 object-contain"
             />
