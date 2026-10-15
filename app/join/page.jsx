@@ -1,4 +1,4 @@
-const GOOGLE_FORM_URL = 'https://placeholder-google-form-url.com'
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/1Hfn6yhTGjukf-4I4aMIow7vr0XtXVmQmP4Yk_X2mMTg/viewform'
 
 const DOMAINS = [
   {
@@ -31,12 +31,12 @@ export default function JoinPage() {
       <section className="border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-24 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-col gap-6 max-w-xl">
-            <p className="font-mono text-xs text-gold">OPEN RECRUITMENT</p>
+            <p className="font-mono text-xs text-gold">RECRUITMENT OPEN!</p>
             <h1 className="font-display font-semibold text-4xl md:text-5xl text-ink leading-tight">
               Come build real systems<br />with us.
             </h1>
             <p className="font-body text-muted text-base leading-relaxed">
-              We recruit students across all years and all engineering branches. No prior experience in RF or satellite systems is required — we teach what you need. What we look for is curiosity, the willingness to build, and the patience to debug at 2am.
+              We recruit students across all years and all engineering branches. No prior experience in RF or satellite systems is required. What we look for is curiosity, the willingness to build and high commitment. 
             </p>
           </div>
 
@@ -46,7 +46,7 @@ export default function JoinPage() {
             rel="noopener noreferrer"
             className="font-mono text-base text-canvas bg-gold px-8 py-4 hover:bg-gold-muted transition-colors duration-200 w-fit whitespace-nowrap"
           >
-            Apply Now →
+            Apply Now! →
           </a>
         </div>
       </section>
@@ -65,7 +65,7 @@ export default function JoinPage() {
             },
             {
               heading: 'How it works',
-              body: 'Fill out the application form. Shortlisted candidates will be called for a brief technical and general interaction. Selected members are onboarded at the start of the semester.',
+              body: 'Fill out the application form, and give the basic aptitude test. Shortlisted applicants will go through a group discussion round followed by an interview.',
             },
           ].map(({ heading, body }) => (
             <div key={heading} className="flex flex-col gap-3 border-t border-border pt-6">
@@ -75,29 +75,6 @@ export default function JoinPage() {
           ))}
         </div>
       </section>
-
-      {/* Open domains */}
-      <section>
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <h2 className="font-display font-semibold text-2xl text-ink mb-12">Open domains</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-            {DOMAINS.map((domain) => (
-              <div key={domain.name} className="bg-canvas p-8 flex flex-col gap-4">
-                <span className="font-mono text-xs text-gold">{domain.name}</span>
-                <p className="font-body text-muted text-sm leading-relaxed">{domain.description}</p>
-                <div className="flex flex-wrap gap-2 mt-auto pt-2">
-                  {domain.skills.map(skill => (
-                    <span key={skill} className="font-mono text-xs text-dim border border-border px-2 py-0.5">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
     </div>
   )
 }
