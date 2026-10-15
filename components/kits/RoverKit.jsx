@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 
 const GRID_W = 280
 const GRID_H = 180
-const STEP = 6
+const STEP = 2
 
 const ROCKS = [
   { x: 60,  y: 35,  rx: 12, ry: 7  },
