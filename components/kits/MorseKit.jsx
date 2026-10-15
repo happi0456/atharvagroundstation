@@ -11,105 +11,153 @@ const MORSE = {
   '5':'.....','6':'-....','7':'--...','8':'---..','9':'----.',
 }
 
-function toMorse(text) {
-  return text
-    .toUpperCase()
-    .split('')
-    .map(c => c === ' ' ? '/' : (MORSE[c] || '?'))
-    .join(' ')
-}
+const REVERSE_MORSE = Object.fromEntries(Object.entries(MORSE).map(([k,v]) => [v,k]))
 
 export default function MorseKit({ onInteractionEnd }) {
+  const [mode, setMode] = useState('type')
   const [input, setInput] = useState('')
-  const [flashing, setFlashing] = useState(false)
-  const [flashIndex, setFlashIndex] = useState(-1)
-  const timeouts = useRef([])
+  const [sequence, setSequence] = useState('')
+  const [decoded, setDecoded] = useState('')
+  const [active, setActive] = useState(null)
   const interacted = useRef(false)
+  const endTimer = useRef(null)
 
-  const morse = toMorse(input || 'ASGS')
-  const symbols = morse.split('')
-
-  const clearAll = () => timeouts.current.forEach(clearTimeout)
-
-  const flash = () => {
-    if (!input) return
-    clearAll()
-    interacted.current = true
-    let t = 0
-    const unit = 150
-    symbols.forEach((sym, i) => {
-      const on = timeouts.current[timeouts.current.length] = setTimeout(() => {
-        setFlashing(true)
-        setFlashIndex(i)
-      }, t)
-      t += sym === '.' ? unit : sym === '-' ? unit * 3 : 0
-      const off = timeouts.current[timeouts.current.length] = setTimeout(() => {
-        setFlashing(false)
-        setFlashIndex(-1)
-      }, t)
-      t += unit
-      timeouts.current.push(on, off)
-    })
-    timeouts.current.push(
-      setTimeout(() => {
-        if (interacted.current) {
-          onInteractionEnd()
-          interacted.current = false
-        }
-      }, t + 500)
-    )
+  const triggerEnd = () => {
+    clearTimeout(endTimer.current)
+    endTimer.current = setTimeout(() => {
+      if (interacted.current) {
+        onInteractionEnd()
+        interacted.current = false
+      }
+    }, 2500)
   }
 
+  const toMorse = (text) =>
+    text.toUpperCase().split('').map(c => c === ' ' ? '/' : (MORSE[c] || '?')).join(' ')
+
+  const addSymbol = (sym) => {
+    interacted.current = true
+    const next = sequence ? sequence + sym : sym
+    setSequence(next)
+    const letter = REVERSE_MORSE[next]
+    if (letter) {
+      setDecoded(prev => prev + letter)
+      setTimeout(() => setSequence(''), 600)
+    }
+    triggerEnd()
+  }
+
+  const clearAll = () => {
+    setSequence('')
+    setDecoded('')
+    setInput('')
+  }
+
+  const morse = mode === 'type' ? toMorse(input || '') : ''
+
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center gap-5 p-6 select-none">
+    <div className="w-full h-full flex flex-col items-center justify-center gap-3 p-4 select-none">
 
-      {/* Flash indicator */}
-      <div className={`w-16 h-16 rounded-full border-2 transition-all duration-75 ${
-        flashing ? 'bg-gold border-gold' : 'bg-canvas border-border'
-      }`} />
-
-      {/* Morse output */}
-      <div className="w-full border border-border bg-canvas p-3 min-h-12 flex flex-wrap gap-1 items-center">
-        {symbols.map((sym, i) => (
-          <span
-            key={i}
-            className={`font-mono text-sm transition-colors duration-75 ${
-              i === flashIndex ? 'text-gold' : 'text-muted'
+      {/* Mode toggle */}
+      <div className="flex w-full border border-border">
+        {['type', 'key'].map(m => (
+          <button
+            key={m}
+            onClick={() => { setMode(m); clearAll() }}
+            className={`flex-1 font-mono text-xs py-1.5 transition-colors duration-150 ${
+              mode === m ? 'bg-gold text-canvas' : 'text-dim hover:text-ink'
             }`}
           >
-            {sym}
-          </span>
+            {m === 'type' ? 'Type → Morse' : 'Key → Decode'}
+          </button>
         ))}
       </div>
 
-      {/* Input */}
-      <input
-        type="text"
-        maxLength={20}
-        placeholder="Type anything..."
-        value={input}
-        onChange={e => {
-          setInput(e.target.value)
-          interacted.current = true
-        }}
-        onBlur={() => {
-          if (interacted.current) {
-            onInteractionEnd()
-            interacted.current = false
-          }
-        }}
-        className="w-full bg-canvas border border-border text-ink font-mono text-sm px-3 py-2 outline-none focus:border-gold transition-colors duration-200 placeholder:text-dim"
-      />
+      {mode === 'type' ? (
+        <>
+          {/* Input */}
+          <input
+            type="text"
+            maxLength={16}
+            placeholder="type a word..."
+            value={input}
+            onChange={e => {
+              setInput(e.target.value)
+              interacted.current = true
+              triggerEnd()
+            }}
+            className="w-full bg-canvas border border-border text-ink font-mono text-sm px-3 py-2 outline-none focus:border-gold transition-colors duration-200 placeholder:text-dim"
+          />
 
-      <button
-        onClick={flash}
-        className="font-mono text-xs text-canvas bg-gold px-4 py-2 hover:bg-gold-muted transition-colors duration-200 disabled:opacity-40"
-        disabled={!input}
-      >
-        Flash it
-      </button>
+          {/* Morse output */}
+          <div className="w-full border border-border bg-surface p-3 min-h-16 flex flex-wrap gap-1 items-start">
+            {input ? morse.split(' ').map((word, wi) => (
+              <span key={wi} className="font-mono text-sm text-gold">{word}&nbsp;</span>
+            )) : (
+              <span className="font-mono text-xs text-dim">morse output appears here</span>
+            )}
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Current sequence */}
+          <div className="w-full border border-border bg-surface p-3 flex items-center justify-between">
+            <span className="font-mono text-lg text-gold tracking-widest">{sequence || '·'}</span>
+            <span className="font-mono text-xs text-dim">
+              {REVERSE_MORSE[sequence] ? `→ ${REVERSE_MORSE[sequence]}` : ''}
+            </span>
+          </div>
 
-      <span className="font-mono text-xs text-dim">type a word · watch it flash in morse</span>
+          {/* Decoded output */}
+          <div className="w-full border border-border bg-canvas p-2 min-h-8 flex items-center">
+            <span className="font-mono text-sm text-ink tracking-widest">
+              {decoded || <span className="text-dim text-xs">decoded text</span>}
+            </span>
+          </div>
+
+          {/* Dot / Dash buttons */}
+          <div className="flex gap-3 w-full">
+            <button
+              onPointerDown={() => setActive('dot')}
+              onPointerUp={() => { setActive(null); addSymbol('.') }}
+              className={`flex-1 py-4 border font-mono text-xl transition-colors duration-75 ${
+                active === 'dot' ? 'bg-gold text-canvas border-gold' : 'border-border text-muted hover:border-gold hover:text-gold'
+              }`}
+            >
+              ·
+            </button>
+            <button
+              onPointerDown={() => setActive('dash')}
+              onPointerUp={() => { setActive(null); addSymbol('-') }}
+              className={`flex-1 py-4 border font-mono text-xl transition-colors duration-75 ${
+                active === 'dash' ? 'bg-gold text-canvas border-gold' : 'border-border text-muted hover:border-gold hover:text-gold'
+              }`}
+            >
+              —
+            </button>
+          </div>
+
+          {/* Space / Clear */}
+          <div className="flex gap-3 w-full">
+            <button
+              onClick={() => { setDecoded(prev => prev + ' '); setSequence(''); interacted.current = true; triggerEnd() }}
+              className="flex-1 py-1.5 border border-border font-mono text-xs text-dim hover:text-ink hover:border-muted transition-colors duration-150"
+            >
+              space
+            </button>
+            <button
+              onClick={clearAll}
+              className="flex-1 py-1.5 border border-border font-mono text-xs text-dim hover:text-ink hover:border-muted transition-colors duration-150"
+            >
+              clear
+            </button>
+          </div>
+        </>
+      )}
+
+      <span className="font-mono text-xs text-dim">
+        {mode === 'type' ? 'type to encode' : 'tap · and — to decode morse'}
+      </span>
     </div>
   )
 }
