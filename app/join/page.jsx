@@ -25,7 +25,7 @@ const DOMAINS = [
 
 export default function JoinPage() {
   return (
-    <div className="pt-16 animate-page">
+    <div className="pt-16">
 
       {/* Header + CTA */}
       <section className="border-b border-border">

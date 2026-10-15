@@ -41,7 +41,7 @@ const statusStyle = {
 
 export default function ProjectsPage() {
   return (
-    <div className="pt-16 animate-page">
+    <div className="pt-16">
 
       {/* Header */}
       <section className="border-b border-border">
