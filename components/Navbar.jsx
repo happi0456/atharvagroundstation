@@ -30,10 +30,10 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group"
           >
             <Image
-            src="/assets/logo.jpeg"
+            src="/assets/logo.png"
             alt="ASGS Logo"
-            width={28}
-            height={28}
+            width={48}
+            height={48}
             className="object-contain"
           />
             <span className="font-display font-semibold text-ink text-sm tracking-wide group-hover:text-gold transition-colors duration-200">
