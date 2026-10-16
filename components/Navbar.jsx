@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const NAV_LINKS = [
   { label: 'About Us', href: '/about'    },
@@ -28,11 +29,13 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="flex items-center gap-2.5 group"
           >
-            <img 
-              src="assets/images/logo.jpeg" 
-              alt="ASGS Logo" 
-              className="w-7 h-7 object-contain"
-            />
+            <Image
+            src="/assets/logo.jpeg"
+            alt="ASGS Logo"
+            width={28}
+            height={28}
+            className="object-contain"
+          />
             <span className="font-display font-semibold text-ink text-sm tracking-wide group-hover:text-gold transition-colors duration-200">
               Atharva Satellite Ground Station
             </span>
